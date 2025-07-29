@@ -44,6 +44,7 @@ public class ProductService {
 
     public ProductResponse<List<Product>> getAllProduct() throws ApiException {
         try {
+
             List<Product> response = productRepository.findAll();
             ProductResponse<List<Product>> productResponse = new ProductResponse();
             productResponse.setCode(200);

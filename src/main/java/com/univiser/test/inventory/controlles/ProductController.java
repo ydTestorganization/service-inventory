@@ -6,6 +6,8 @@ import com.univiser.test.inventory.dto.ProductResponse;
 import com.univiser.test.inventory.repositories.model.Product;
 import com.univiser.test.inventory.services.ProductService;
 import com.univiser.test.inventory.utils.exeptions.ApiException;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/inventory/product")
+@Slf4j
 public class ProductController extends BaseController {
 
 
@@ -23,7 +26,7 @@ public class ProductController extends BaseController {
 
      @PostMapping("/create")
      public ResponseEntity<ProductResponse<Product>> createProduct(@RequestBody ProductRequest productRequest) throws ApiException {
-
+                log.info("createProduct,x-reqeust-id={}", MDC.get("x-request-id"));
                  ProductResponse<Product> productResponse = productService.createProduct(productRequest);
                  return response(productResponse);
 

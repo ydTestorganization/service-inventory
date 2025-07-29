@@ -41,6 +41,7 @@ public class ProductController extends BaseController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse<Product>> getProductById(@PathVariable("id") Long id) throws ApiException {
 
+
         ProductResponse<Product> productResponse = productService.getProductById(id);
 
         return response(productResponse);
